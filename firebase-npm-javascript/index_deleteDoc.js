@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore ,doc,getDoc} from "firebase/firestore";
+import { getFirestore ,doc,deleteDoc} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,8 +19,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const docRef=doc(db,"countries","8f1iaq2fIXE4mfkIuN3M");
+const docRef=doc(db,"cities","at3JV0azRNuemFc8R1mw");
 
-const docSnap = await getDoc(docRef);
-
-console.log(docSnap.data())
+deleteDoc(docRef)
+.then(()=>{
+  console.log("success")
+})
+.catch((error)=>{
+  console.log(error)
+})
